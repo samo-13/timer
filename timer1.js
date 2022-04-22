@@ -2,7 +2,7 @@
 // The user can specify an unlimited number of alarms using command line arguments
 
 // machine performs a system sound
-process.stdout.write('\x07'); 
+// process.stdout.write('\x07'); 
 
 // PSEUDO CODE
 // --- take info from the command line using: process.argv
@@ -13,6 +13,19 @@ process.stdout.write('\x07');
 // slice at 2 to ignore unnecessary CL input
 let values = process.argv.slice(2);
 console.log(values);
+
+for (let value in values) {
+  console.log(values[value])
+
+  // if (((values[value]) * 1000) >= 0) {
+  //   setTimeout(() => {
+  //     process.stdout.write("\x07" + "🔔");
+  //   }, (values[value]) * 1000);
+  // }
+  // else {
+  //   process.stdout.write("No 🔕 set! Enter a valid number.")
+  // }
+};
 
 // EDGE CASES
 
@@ -30,3 +43,6 @@ console.log(values);
 // --- 9 seconds
 // --- 10 seconds
 // --- 15 seconds
+
+// Array iteration and for...in
+// Note: for...in should not be used to iterate over an Array where the index order is important.
