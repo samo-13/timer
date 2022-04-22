@@ -1,36 +1,21 @@
 // alarm clock / timer that beeps after a specified amount of time has passed
 // The user can specify an unlimited number of alarms using command line arguments
 
-// machine performs a system sound
-// process.stdout.write('\x07'); 
-
-// PSEUDO CODE
-// --- take info from the command line using: process.argv
-// --- if statement for edge cases
-// --- use setTimeout for timer delay based on input
-// --- Send an error message? 
-
 // slice at 2 to ignore unnecessary CL input
 let values = process.argv.slice(2);
-console.log(values);
 
 for (let value in values) {
-  // console.log(values[value])
-  // console.log(Number(values[value]))
 
+  // ensure it's a positive number
   if ((Number(values[value]) * 1000) > 0) {
-    console.log(`alarm!`)
-  } else { console.log('error!!!')
+    setTimeout(() => {
+      process.stdout.write(`\x07 🔔 ${values[value]} Second Alarm 🔔 \n`);
+    }, (values[value]) * 1000);
+  
+  } else {
+    process.stdout.write(`🔕 You entered '${values[value]}' Please enter a valid number 🔕 \n`)
   }
 
-  // if (((values[value]) * 1000) >= 0) {
-  //   setTimeout(() => {
-  //     process.stdout.write("\x07" + "🔔");
-  //   }, (values[value]) * 1000);
-  // }
-  // else {
-  //   process.stdout.write("No 🔕 set! Enter a valid number.")
-  // }
 };
 
 // EDGE CASES
@@ -39,7 +24,7 @@ for (let value in values) {
 // An input is a negative number: Ignore/skip any numbers that are negative. We can't schedule anything in the past.
 // An input is not a number: Ignore/skip these as well, instead of attempting to call setTimeout with a non-number.
 
-// DEVELOPMENT NOTES
+// DEVELOPMENT NOTES TO TEST
 
 // node timer1.js 10 3 5 15 9
 
@@ -49,6 +34,3 @@ for (let value in values) {
 // --- 9 seconds
 // --- 10 seconds
 // --- 15 seconds
-
-// Array iteration and for...in
-// Note: for...in should not be used to iterate over an Array where the index order is important.
