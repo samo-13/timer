@@ -10,6 +10,10 @@ process.stdout.write('\x07');
 // --- use setTimeout for timer delay based on input
 // --- Send an error message? 
 
+// slice at 2 to ignore unnecessary CL input
+let values = process.argv.slice(2);
+console.log(values);
+
 // EDGE CASES
 
 // No numbers are provided: Easy. It should just not beep at all and end immediately since no beeps should get scheduled.
