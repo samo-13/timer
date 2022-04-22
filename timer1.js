@@ -15,15 +15,12 @@ let values = process.argv.slice(2);
 console.log(values);
 
 for (let value in values) {
-  console.log(values[value])
-  console.log(Number(values[value]))
+  // console.log(values[value])
+  // console.log(Number(values[value]))
 
-  if ((values[value] * 1000) > 0) {
+  if ((Number(values[value]) * 1000) > 0) {
     console.log(`alarm!`)
-  };
-
-  if (typeof(values[value]) != 'number') {
-    console.log('error!!!')
+  } else { console.log('error!!!')
   }
 
   // if (((values[value]) * 1000) >= 0) {
